@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('catalog/', include('catalog.urls')),
-    # re_path('/',RedirectView.as_view(url='catalog', permanent=False),name='index')
+    path('',RedirectView.as_view(url='catalog', permanent=False),name='index')
 
 ]
 

@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+{% block title %}
+    Our Library
+{% endblock %}
+{% block content %}
+    <h1>Book List</h1>
+    <h4>{{ name }}</h4>
+
+    {% if book_list %}
+        <ul>
+            {% for book in book_list %}
+                <li>
+                    <a href="{{ book.get_absolute_url }}"> {{ book.title }}</a>
+                <p>{{ book.author }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <p>There are no books in the library</p>
+    {% endif %}
+    <hr>
+    {% if perms.catalog.can_mark_returned %}
+        <a href="{% url 'books_create' %}">Create new book</a>
+    {% endif %}
+{% endblock %}

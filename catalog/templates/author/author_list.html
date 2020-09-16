@@ -1,0 +1,19 @@
+{% extends 'base_generic.html' %}
+{% block title %}
+    Authors
+{% endblock %}
+
+{% block content %}
+{% for author in author_list %}
+    <div>
+    <h4><a href="{{ author.get_absolute_url }}">{{ author }}</a></h4>
+    <p>Date of birth: {{ author.date_of_birth }}</p>
+    <p>Date of death: {{ author.date_of_death }}</p>
+    <p>Author Id: {{ author.id }}</p>
+    </div>
+{% endfor %}
+    <hr>
+    {% if perms.catalog.can_mark_returned %}
+        <a href="{% url 'author_create' %}">Create new author</a>
+    {% endif %}
+{% endblock %}
